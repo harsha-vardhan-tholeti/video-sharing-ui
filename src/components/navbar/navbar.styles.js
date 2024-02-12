@@ -30,8 +30,11 @@ export const Search = styled.div`
 `;
 
 export const Input = styled.input`
+  width: 95%;
   border: none;
   background-color: transparent;
+  outline: none;
+  color: ${({ theme }) => theme.text};
 `;
 
 export const Button = styled.button`
