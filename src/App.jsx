@@ -12,7 +12,7 @@ import axios from "axios";
 import Search from "./pages/searchpage/Search";
 
 const App = () => {
-  axios.defaults.baseURL = "http://localhost:8000/api/v1/";
+  axios.defaults.baseURL = "https://video-sharing-api.vercel.app/api/v1/";
 
   axios.defaults.withCredentials = true;
 
