@@ -7,7 +7,7 @@ export const Container = styled.div`
 `;
 
 export const Avatar = styled.img`
-  width: 80px;
+  width: 50px;
   height: 50px;
   border-radius: 50%;
   background-color: gray;

@@ -1,21 +1,21 @@
-import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
-import Card from "../../components/card/Card";
-import { Container } from "./home.styles";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { Container } from "./search.styles";
+import Card from "../../components/card/Card";
 
-const Home = ({ type }) => {
+const Search = () => {
   const [videos, setVideos] = useState([]);
+  const query = useLocation().search;
 
   useEffect(() => {
     const fetchVideos = async () => {
-      const res = await axios.get(`videos/${type}`, {
-        withCredentials: type === "subscribed" ? true : false,
-      });
+      const res = await axios.get(`videos/search${query}`);
       setVideos(res.data);
     };
+
     fetchVideos();
-  }, [type]);
+  }, [query]);
 
   return (
     <Container>
@@ -26,8 +26,4 @@ const Home = ({ type }) => {
   );
 };
 
-Home.propTypes = {
-  type: PropTypes.string,
-};
-
-export default Home;
+export default Search;

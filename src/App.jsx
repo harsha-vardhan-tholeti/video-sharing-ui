@@ -8,8 +8,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/homepage/Home";
 import Video from "./pages/videopage/Video";
 import Login from "./pages/loginpage/Login";
+import axios from "axios";
+import Search from "./pages/searchpage/Search";
 
 const App = () => {
+  axios.defaults.baseURL = "http://localhost:8000/api/v1/";
+
+  axios.defaults.withCredentials = true;
+
   const [darkMode, setDarkMode] = useState(true);
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
@@ -21,6 +27,13 @@ const App = () => {
             <Wrapper>
               <Routes>
                 <Route path="/">
+                  <Route index element={<Home type="random" />} />
+                  <Route path="trends" element={<Home type="trending" />} />
+                  <Route
+                    path="subscriptions"
+                    element={<Home type="subscribed" />}
+                  />
+                  <Route path="search" element={<Search />} />
                   <Route index element={<Home />} />
                   <Route path="signIn" element={<Login />} />
                   <Route path="video" element={<Video />}>

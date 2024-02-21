@@ -1,33 +1,31 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
+import { Container } from "./recommendations.styles";
 import Card from "../../components/card/Card";
-import { Container } from "./home.styles";
 import axios from "axios";
 
-const Home = ({ type }) => {
+const Recommendations = ({ tags }) => {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     const fetchVideos = async () => {
-      const res = await axios.get(`videos/${type}`, {
-        withCredentials: type === "subscribed" ? true : false,
-      });
+      const res = await axios.get(`videos/tags?tags=${tags}`);
       setVideos(res.data);
     };
+
     fetchVideos();
-  }, [type]);
+  }, [tags]);
 
   return (
     <Container>
       {videos.map((video) => (
-        <Card key={video._id} video={video} />
+        <Card type="sm" key={video._id} video={video} />
       ))}
     </Container>
   );
 };
-
-Home.propTypes = {
-  type: PropTypes.string,
+Recommendations.propTypes = {
+  tags: PropTypes.arrayOf(),
 };
 
-export default Home;
+export default Recommendations;

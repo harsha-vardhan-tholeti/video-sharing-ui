@@ -27,6 +27,7 @@ export const Search = styled.div`
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 3px;
+  color: ${({ theme }) => theme.text};
 `;
 
 export const Input = styled.input`
@@ -34,7 +35,6 @@ export const Input = styled.input`
   border: none;
   background-color: transparent;
   outline: none;
-  color: ${({ theme }) => theme.text};
 `;
 
 export const Button = styled.button`
@@ -48,4 +48,19 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   gap: 5px;
+`;
+
+export const User = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.text};
+`;
+
+export const Avatar = styled.img`
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #999;
 `;

@@ -11,6 +11,12 @@ export const Content = styled.div`
 
 export const VideoWrapper = styled.div``;
 
+export const VideoFrame = styled.video`
+  max-height: 720px;
+  width: 100%;
+  object-fit: cover;
+`;
+
 export const Title = styled.h1`
   font-size: 18px;
   font-weight: 400;
@@ -45,10 +51,6 @@ export const Button = styled.div`
 export const Hr = styled.hr`
   margin: 15px 0;
   border: 0.5px solid ${({ theme }) => theme.soft};
-`;
-
-export const Recommendations = styled.div`
-  flex: 2;
 `;
 
 export const Channel = styled.div`

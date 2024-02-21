@@ -34,6 +34,7 @@ export const Input = styled.input`
   border-radius: 3px;
   padding: 10px;
   background-color: transparent;
+  color: ${({ theme }) => theme.text};
   width: 100%;
 `;
 
