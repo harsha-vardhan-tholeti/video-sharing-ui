@@ -24,9 +24,9 @@ export const Search = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px;
+  padding: 8px 16px;
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 24px;
   color: ${({ theme }) => theme.text};
 `;
 
@@ -35,6 +35,7 @@ export const Input = styled.input`
   border: none;
   background-color: transparent;
   outline: none;
+  color: ${({ theme }) => theme.text};
 `;
 
 export const Button = styled.button`
@@ -56,6 +57,7 @@ export const User = styled.div`
   gap: 10px;
   font-weight: 500;
   color: ${({ theme }) => theme.text};
+  position: relative;
 `;
 
 export const Avatar = styled.img`
@@ -63,4 +65,28 @@ export const Avatar = styled.img`
   height: 32px;
   border-radius: 50%;
   background-color: #999;
+  margin-left: 8px;
+  cursor: pointer;
+`;
+
+export const Dropdown = styled.div`
+  width: 136px;
+  padding: 16px;
+  position: absolute;
+  top: 50px;
+  right: 4px;
+  border-radius: 8px;
+  background-color: ${({ theme }) => theme.bgLighter};
+`;
+
+export const DropdownItem = styled.div`
+  margin: 16px 0;
+  padding: 12px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.soft};
+  }
 `;

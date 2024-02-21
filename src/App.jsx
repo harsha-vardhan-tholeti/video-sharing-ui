@@ -1,9 +1,9 @@
+import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { Container, Main, Wrapper } from "./app.styles";
 import Menu from "./components/menu/Menu";
 import Navbar from "./components/navbar/Navbar";
 import { darkTheme, lightTheme } from "./utils/Theme";
-import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/homepage/Home";
 import Video from "./pages/videopage/Video";
@@ -17,6 +17,7 @@ const App = () => {
   axios.defaults.withCredentials = true;
 
   const [darkMode, setDarkMode] = useState(true);
+
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <Container>
