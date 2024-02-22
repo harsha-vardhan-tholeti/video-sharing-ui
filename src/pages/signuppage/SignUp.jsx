@@ -10,7 +10,7 @@ import {
   SubTitle,
   Title,
   Wrapper,
-} from "./login.styles";
+} from "./signup.styles";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { loginFailed, loginStart, loginSuccess } from "../../redux/userSlice";
@@ -18,35 +18,33 @@ import { auth, provider } from "../../firebase";
 import { signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const SignUp = () => {
   const { currentUser } = useSelector((state) => state.user);
 
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
-    dispatch(loginStart());
     try {
-      const res = await axios.post(
-        "auth/signIn",
+      await axios.post(
+        "auth/signUp",
         {
           name,
+          email,
           password,
         },
         {
           withCredentials: true,
         }
       );
-      dispatch(loginSuccess(res.data.data));
-
-      navigate("/");
+      navigate("/signIn");
     } catch (error) {
       console.log(error);
-      dispatch(loginFailed());
     }
   };
 
@@ -69,7 +67,7 @@ const Login = () => {
       .then((res) => {
         console.log(res);
         dispatch(loginSuccess(res.data));
-        navigate("/");
+        navigate("/signIn");
       })
       .catch((error) => {
         console.log(error);
@@ -80,23 +78,30 @@ const Login = () => {
   return (
     <Container>
       <Wrapper>
-        <Title>Sign In</Title>
+        <Title>Sign Up</Title>
         <SubTitle>to continue to YouTube</SubTitle>
         <Input
           placeholder="username"
           onChange={(e) => setName(e.target.value)}
         />
         <Input
+          type="email"
+          placeholder="email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <Input
           type="password"
           placeholder="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <PageLink onClick={() => navigate("/signUp")}>Not a Member?</PageLink>
-        <Button onClick={handleLogin}>Sign In</Button>
+        <PageLink onClick={() => navigate("/signIn")}>
+          Already have a account?
+        </PageLink>
+        <Button onClick={handleSignUp}>Sign Up</Button>
         <Title>Or</Title>
         {!currentUser && (
           <>
-            <Button onClick={signInWithGoogle}>Sign In with Google</Button>
+            <Button onClick={signInWithGoogle}>Sign Up with Google</Button>
           </>
         )}
       </Wrapper>
@@ -112,4 +117,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;

@@ -10,9 +10,10 @@ import Video from "./pages/videopage/Video";
 import Login from "./pages/loginpage/Login";
 import axios from "axios";
 import Search from "./pages/searchpage/Search";
+import SignUp from "./pages/signuppage/SignUp";
 
 const App = () => {
-  axios.defaults.baseURL = "https://vs-api.onrender.com/api/v1/";
+  axios.defaults.baseURL = "http://localhost:8000/api/v1/";
 
   axios.defaults.withCredentials = true;
 
@@ -37,6 +38,7 @@ const App = () => {
                   <Route path="search" element={<Search />} />
                   <Route index element={<Home />} />
                   <Route path="signIn" element={<Login />} />
+                  <Route path="signUp" element={<SignUp />} />
                   <Route path="video" element={<Video />}>
                     <Route path=":id" element={<Video />} />
                   </Route>

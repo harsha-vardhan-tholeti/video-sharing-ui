@@ -13,11 +13,11 @@ import {
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { VideoCallOutlined } from "@mui/icons-material";
+import { Logout, VideoCallOutlined } from "@mui/icons-material";
 import { logOut } from "../../redux/userSlice";
 import axios from "axios";
 import { useCookies } from "react-cookie";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Upload from "../upload/Upload";
 
 const Navbar = () => {
@@ -31,18 +31,8 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    let handler = () => {
-      setOpenDropDown(false);
-    };
-
-    document.addEventListener("mousedown", handler);
-  });
-
   const handleLogOut = async () => {
-    await axios.post("auth/signOut", {
-      withCredentials: true,
-    });
+    await axios.post("auth/signOut");
     removeCookie("access_token");
     dispatch(logOut());
     navigate("/");
@@ -67,11 +57,13 @@ const Navbar = () => {
 
               <Avatar
                 src={currentUser.img}
-                onClick={() => setOpenDropDown((prev) => !prev)}
+                onMouseEnter={() => setOpenDropDown(true)}
               />
 
+              <Logout onClick={handleLogOut} />
+
               {openDropDown && (
-                <Dropdown>
+                <Dropdown onMouseLeave={() => setOpenDropDown(false)}>
                   <DropdownItem>My Videos</DropdownItem>
                   <DropdownItem onClick={handleLogOut}>Sign Out</DropdownItem>
                 </Dropdown>
