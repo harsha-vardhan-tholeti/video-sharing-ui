@@ -60,8 +60,6 @@ const Navbar = () => {
                 onMouseEnter={() => setOpenDropDown(true)}
               />
 
-              <Logout onClick={handleLogOut} />
-
               {openDropDown && (
                 <Dropdown onMouseLeave={() => setOpenDropDown(false)}>
                   <DropdownItem>My Videos</DropdownItem>
