@@ -13,7 +13,7 @@ import {
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Logout, VideoCallOutlined } from "@mui/icons-material";
+import { VideoCallOutlined } from "@mui/icons-material";
 import { logOut } from "../../redux/userSlice";
 import axios from "axios";
 import { useCookies } from "react-cookie";
