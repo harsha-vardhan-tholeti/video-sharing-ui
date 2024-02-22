@@ -13,7 +13,7 @@ import Search from "./pages/searchpage/Search";
 import SignUp from "./pages/signuppage/SignUp";
 
 const App = () => {
-  axios.defaults.baseURL = "http://localhost:8000/api/v1/";
+  axios.defaults.baseURL = "https://vs-api.onrender.com/api/v1/";
 
   axios.defaults.withCredentials = true;
 
