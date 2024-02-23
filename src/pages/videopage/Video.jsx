@@ -41,8 +41,6 @@ const Video = () => {
   const { currentVideo } = useSelector((state) => state.video);
   const dispatch = useDispatch();
 
-  console.log(currentUser);
-
   const path = useLocation().pathname.split("/")[2];
 
   const [channel, setChannel] = useState({});
@@ -140,7 +138,7 @@ const Video = () => {
             </ChannelDetails>
           </ChannelInfo>
           <Subscribe onClick={handleSubscribe}>
-            {currentUser.subscribedChannels?.includes(channel._id)
+            {currentUser?.subscribedChannels?.includes(channel._id)
               ? "SUBSCRIBED"
               : "SUBSCRIBE"}
           </Subscribe>
