@@ -41,6 +41,8 @@ const Video = () => {
   const { currentVideo } = useSelector((state) => state.video);
   const dispatch = useDispatch();
 
+  console.log(currentUser);
+
   const path = useLocation().pathname.split("/")[2];
 
   const [channel, setChannel] = useState({});
