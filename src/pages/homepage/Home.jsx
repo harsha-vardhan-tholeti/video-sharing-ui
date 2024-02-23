@@ -15,7 +15,7 @@ const Home = ({ type }) => {
       setVideos(res.data);
     };
     fetchVideos();
-  }, []);
+  }, [type]);
 
   return (
     <Container>
