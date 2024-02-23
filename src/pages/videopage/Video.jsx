@@ -128,7 +128,7 @@ const Video = () => {
         <Hr />
         <Channel>
           <ChannelInfo>
-            <Image />
+            <Image src={channel && channel.img ? channel.img : ""} />
             <ChannelDetails>
               <ChannelName>{channel?.name}</ChannelName>
               <ChannelCounter>
