@@ -56,7 +56,7 @@ const Navbar = () => {
               <VideoCallOutlined onClick={() => setOpen(true)} />
 
               <Avatar
-                src={currentUser.img}
+                src={currentUser?.img}
                 onMouseEnter={() => setOpenDropDown(true)}
               />
 

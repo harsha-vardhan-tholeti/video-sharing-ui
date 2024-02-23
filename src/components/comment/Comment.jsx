@@ -19,7 +19,7 @@ const Comment = ({ comment }) => {
 
   return (
     <Container>
-      <Avatar src={commentUser.img} />
+      <Avatar src={commentUser?.img} />
       <Details>
         <Name>
           {commentUser.name} <Date>{format(commentUser.createdAt)}</Date>
