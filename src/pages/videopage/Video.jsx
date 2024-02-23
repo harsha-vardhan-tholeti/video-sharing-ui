@@ -49,9 +49,9 @@ const Video = () => {
     const fetchVideo = async () => {
       try {
         const videoRes = await axios.get(`videos/${path}`);
-        const channelRes = await axios.get(`users/${videoRes.data.userId}`);
-        dispatch(fetchSuccess(videoRes.data));
-        setChannel(channelRes.data);
+        const channelRes = await axios.get(`users/${videoRes?.data?.userId}`);
+        dispatch(fetchSuccess(videoRes?.data));
+        setChannel(channelRes?.data);
       } catch (error) {
         console.log(error);
       }
@@ -60,33 +60,33 @@ const Video = () => {
   }, [path, dispatch]);
 
   const handleLike = async () => {
-    await axios.patch(`users/like/${currentVideo._id}`, {
+    await axios.patch(`users/like/${currentVideo?._id}`, {
       withCredentials: true,
     });
-    dispatch(like(currentUser._id));
+    dispatch(like(currentUser?._id));
   };
 
   const handleDislike = async () => {
-    await axios.patch(`users/dislike/${currentVideo._id}`, {
+    await axios.patch(`users/dislike/${currentVideo?._id}`, {
       withCredentials: true,
     });
-    dispatch(dislike(currentUser._id));
+    dispatch(dislike(currentUser?._id));
   };
 
   const handleSubscribe = async () => {
     if (
-      currentUser.subscribedChannels.includes(channel._id) &&
-      currentUser.subscribedChannels.length > 0
+      currentUser?.subscribedChannels?.includes(channel?._id) &&
+      currentUser?.subscribedChannels?.length > 0
     ) {
-      await axios.patch(`users/unsubscribe/${channel._id}`, {
+      await axios.patch(`users/unsubscribe/${channel?._id}`, {
         withCredentials: true,
       });
     } else {
-      await axios.patch(`users/subscribe/${channel._id}`, {
+      await axios.patch(`users/subscribe/${channel?._id}`, {
         withCredentials: true,
       });
     }
-    dispatch(subscription(channel._id));
+    dispatch(subscription(channel?._id));
   };
 
   return (
@@ -144,9 +144,9 @@ const Video = () => {
           </Subscribe>
         </Channel>
         <Hr />
-        <Comments videoId={currentVideo._id} />
+        <Comments videoId={currentVideo?._id} />
       </Content>
-      <Recommendations tags={currentVideo.tags} />
+      <Recommendations tags={currentVideo?.tags} />
     </Container>
   );
 };
