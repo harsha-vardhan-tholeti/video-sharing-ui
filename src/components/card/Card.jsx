@@ -20,22 +20,22 @@ const Card = ({ type, video }) => {
   useEffect(() => {
     const fetchChannel = async () => {
       const res = await axios.get(`users/${video?.userId}`);
-      setChannel(res.data);
+      setChannel(res?.data);
     };
     fetchChannel();
-  }, [video.userId]);
+  }, [video?.userId]);
 
   return (
-    <Link to={`/video/${video._id}`} style={{ textDecoration: "none" }}>
+    <Link to={`/video/${video?._id}`} style={{ textDecoration: "none" }}>
       <Container type={type}>
-        <Image type={type} src={video.imgUrl} />
+        <Image type={type} src={video?.imgUrl} />
         <Details type={type}>
-          <ChannelImage type={type} src={channel.img} />
+          <ChannelImage type={type} src={channel?.img} />
           <Texts>
-            <Title>{video.title}</Title>
-            <ChannelName>{channel.name}</ChannelName>
+            <Title>{video?.title}</Title>
+            <ChannelName>{channel?.name}</ChannelName>
             <Info>
-              {video.views} views {format(video.createdAt)}
+              {video?.views} views {format(video?.createdAt)}
             </Info>
           </Texts>
         </Details>
