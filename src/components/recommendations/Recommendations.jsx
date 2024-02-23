@@ -25,7 +25,7 @@ const Recommendations = ({ tags }) => {
   );
 };
 Recommendations.propTypes = {
-  tags: PropTypes.arrayOf(),
+  tags: PropTypes.array,
 };
 
 export default Recommendations;

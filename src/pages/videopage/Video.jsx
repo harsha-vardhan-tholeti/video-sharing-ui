@@ -102,7 +102,7 @@ const Video = () => {
           </Info>
           <Buttons>
             <Button onClick={handleLike}>
-              {currentVideo?.likes?.includes(currentUser._id) ? (
+              {currentVideo?.likes?.includes(currentUser?._id) ? (
                 <ThumbUpAlt />
               ) : (
                 <ThumbUpOffAlt />
@@ -110,7 +110,7 @@ const Video = () => {
               {currentVideo?.likes?.length}
             </Button>
             <Button onClick={handleDislike}>
-              {currentVideo?.disLikes?.includes(currentUser._id) ? (
+              {currentVideo?.disLikes?.includes(currentUser?._id) ? (
                 <ThumbDown />
               ) : (
                 <ThumbDownOffAltOutlined />
