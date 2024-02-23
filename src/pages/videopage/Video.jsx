@@ -89,6 +89,8 @@ const Video = () => {
     dispatch(subscription(channel?._id));
   };
 
+  console.log(channel);
+
   return (
     <Container>
       <Content>
